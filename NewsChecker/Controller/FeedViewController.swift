@@ -50,12 +50,21 @@ extension FeedViewController {
         }
     }
     
+    //Error handle
     func didFailWithError(error: Error) {
-        print(error)
+        DispatchQueue.main.sync {
+            
+            let alert = UIAlertController(title: "Oops", message: error.localizedDescription, preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .default) { (action) in }
+
+            alert.addAction(action)
+        
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
 
-//MARK: - TableView delegate
+//MARK: - TableView delegates
 extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,11 +87,27 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
             }
         } else {
             //Set default image
+            cell.articleImage.image = UIImage(named: "Placeholder")!
         }
         
-        
-        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let viewController = storyboard?.instantiateViewController(identifier: "PostVC") as? PostViewController {
+            
+            let selectedPost = posts[indexPath.row]
+            
+            viewController.articleDescription = selectedPost?.description
+            viewController.articleTitle = selectedPost?.title
+            viewController.imageURL = selectedPost?.image
+            viewController.articleURL = selectedPost?.url
+            viewController.title = selectedPost?.category
+            navigationController?.pushViewController(viewController, animated: true)
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

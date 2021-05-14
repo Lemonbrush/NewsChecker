@@ -21,7 +21,7 @@ class NetworkManager: ObservableObject {
     //MARK: - Fetching news data
     
     func fetchNewsData() {
-        let urlString = "\(weatherBaseURL)access_key=\(appid)&sources=en"
+        let urlString = "\(weatherBaseURL)access_key=\(appid)&sources=en&limit=100"
         performRequest(with: urlString)
     }
     

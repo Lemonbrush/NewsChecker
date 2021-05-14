@@ -25,7 +25,7 @@ class ImageLoader {
             
         } else {
             
-            let placeholder = UIImage() //Image for loading 
+            let placeholder = UIImage(named: "Placeholder")! //Image for loading 
             
             DispatchQueue.main.async {
                 completionHandler(placeholder)
@@ -38,6 +38,8 @@ class ImageLoader {
                 if let data = try? Data(contentsOf: url) {
                     
                     let img: UIImage! = UIImage(data: data)
+                    
+                    //Cache this image
                     self.cache.setObject(img, forKey: imagePath as NSString)
                     
                     DispatchQueue.main.async {
