@@ -5,14 +5,18 @@
 //  Created by Александр on 14.05.2021.
 //
 
+import CoreData
 import UIKit
 
 class FeedViewController: UIViewController, NetworkingManagerDelegate {
     
+    //CoreData container
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     @IBOutlet weak var newsTable: UITableView!
     
     var refreshControl = UIRefreshControl()
-    var imageLoader = ImageLoader() //Lazy loading
+    var imageLoader = ImageLoader() //Lazy loading manager
     
     var posts = [PostModel?]()
     var networkManager = NetworkManager()
@@ -20,6 +24,9 @@ class FeedViewController: UIViewController, NetworkingManagerDelegate {
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // The path to the local directory on the device to store App data
+        //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
         //RefreshControl settings
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -36,6 +43,42 @@ class FeedViewController: UIViewController, NetworkingManagerDelegate {
         networkManager.fetchNewsData()
         refreshControl.endRefreshing()
     }
+    
+    //MARK: - CoreData methods
+    func savePosts(_ posts: [PostModel?]) {
+        
+        for post in posts {
+            let newPost = PostEntity(context: self.context)
+            newPost.category = post?.category
+            newPost.postDescription = post?.description
+            newPost.title = post?.title
+            newPost.url = post?.url
+            newPost.imageUrl = post?.image
+        }
+        
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context, \(error)")
+        }
+        
+    }
+    
+    func updateSavedPosts(_ posts: [PostModel?]) {
+        resetSavedEntities(withName: "PostEntity")
+        savePosts(posts)
+    }
+    
+    func resetSavedEntities(withName entityName: String) {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
+        
+        do {
+            try context.execute(deleteRequest)
+        } catch {
+            print("Fail to reset entities with error, \(error)")
+        }
+    }
 
 }
 
@@ -46,6 +89,7 @@ extension FeedViewController {
         
         DispatchQueue.main.async {
             self.posts = posts
+            self.updateSavedPosts(posts)
             self.newsTable.reloadData()
         }
     }

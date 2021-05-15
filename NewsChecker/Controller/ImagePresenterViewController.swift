@@ -17,6 +17,13 @@ class ImagePresenterViewController: UIViewController {
         super.viewDidLoad()
         
         image.image = presentingImage
+        
+        //dismiss this view by tap
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissByTap(sender:)))
+        self.view.addGestureRecognizer(gesture)
     }
     
+    @objc func dismissByTap(sender: UITapGestureRecognizer) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
