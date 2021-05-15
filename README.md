@@ -1,5 +1,7 @@
 # NewsChecker
 
+![RepoCover](https://github.com/Lemonbrush/NewsChecker/blob/master/screenShot.png)
+
 A basic app that allows you to check latest news provided by the [Mediastack](https://mediastack.com) API  
 
 **Implemented features:**  
