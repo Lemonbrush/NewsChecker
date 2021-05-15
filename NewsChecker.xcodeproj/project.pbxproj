@@ -10,6 +10,7 @@
 		704173A2264EFA94001B1335 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704173A1264EFA94001B1335 /* PostViewController.swift */; };
 		704173A4264F0907001B1335 /* ArticleWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704173A3264F0907001B1335 /* ArticleWebViewController.swift */; };
 		704173A6264F1AAF001B1335 /* ImagePresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704173A5264F1AAF001B1335 /* ImagePresenterViewController.swift */; };
+		704173A8264FCFE7001B1335 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704173A7264FCFE7001B1335 /* Constants.swift */; };
 		70486113264E931600A70109 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70486112264E931600A70109 /* AppDelegate.swift */; };
 		70486115264E931600A70109 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70486114264E931600A70109 /* SceneDelegate.swift */; };
 		70486117264E931600A70109 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70486116264E931600A70109 /* FeedViewController.swift */; };
@@ -28,6 +29,7 @@
 		704173A1264EFA94001B1335 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		704173A3264F0907001B1335 /* ArticleWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleWebViewController.swift; sourceTree = "<group>"; };
 		704173A5264F1AAF001B1335 /* ImagePresenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePresenterViewController.swift; sourceTree = "<group>"; };
+		704173A7264FCFE7001B1335 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7048610F264E931600A70109 /* NewsChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70486112264E931600A70109 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70486114264E931600A70109 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				7048611E264E931A00A70109 /* Assets.xcassets */,
 				70486120264E931A00A70109 /* LaunchScreen.storyboard */,
 				70486136264EE67200A70109 /* ImageLoader.swift */,
+				704173A7264FCFE7001B1335 /* Constants.swift */,
 			);
 			path = SupportiveFiles;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				70486131264EC78600A70109 /* PostModel.swift in Sources */,
 				704173A2264EFA94001B1335 /* PostViewController.swift in Sources */,
 				7048611D264E931600A70109 /* NewsChecker.xcdatamodeld in Sources */,
+				704173A8264FCFE7001B1335 /* Constants.swift in Sources */,
 				7048612D264E964500A70109 /* NetworkingManager.swift in Sources */,
 				70486115264E931600A70109 /* SceneDelegate.swift in Sources */,
 				70486137264EE67200A70109 /* ImageLoader.swift in Sources */,

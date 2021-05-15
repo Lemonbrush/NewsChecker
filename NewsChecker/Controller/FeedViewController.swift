@@ -73,7 +73,7 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell", for: indexPath) as! PostCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: C.newsCellId, for: indexPath) as! PostCell
         
         let postToShow = posts[indexPath.row]
         
@@ -95,7 +95,7 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let viewController = storyboard?.instantiateViewController(identifier: "PostVC") as? PostViewController {
+        if let viewController = storyboard?.instantiateViewController(identifier: C.postVCid) as? PostViewController {
             
             let selectedPost = posts[indexPath.row]
             

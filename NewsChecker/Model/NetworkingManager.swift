@@ -14,14 +14,14 @@ protocol NetworkingManagerDelegate {
 
 class NetworkManager: ObservableObject {
     let weatherBaseURL = "http://api.mediastack.com/v1/news?"
-    let appid = "976c112ab645943f25291e006beb957a"
+    let appid = C.NewsAPI.appid
     
     var delegate: NetworkingManagerDelegate?
     
     //MARK: - Fetching news data
     
     func fetchNewsData() {
-        let urlString = "\(weatherBaseURL)access_key=\(appid)&sources=en&limit=100"
+        let urlString = "\(weatherBaseURL)access_key=\(appid)&sources=en&limit=\(C.NewsAPI.postsLimit)"
         performRequest(with: urlString)
     }
     

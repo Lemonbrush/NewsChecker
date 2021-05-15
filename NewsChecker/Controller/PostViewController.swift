@@ -52,7 +52,7 @@ class PostViewController: UIViewController {
         
         let tappedImage = tapGestureRecognizer.view as! UIImageView
         
-        let imagePresenter = storyboard?.instantiateViewController(identifier: "imagePresenter") as! ImagePresenterViewController
+        let imagePresenter = storyboard?.instantiateViewController(identifier: C.imagePresenterVCid) as! ImagePresenterViewController
         imagePresenter.presentingImage = tappedImage.image
         
         present(imagePresenter, animated: true, completion: nil)
